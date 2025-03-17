@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Munka hozzáadása</h1>
+
+<!-- Flash üzenetek megjelenítése -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flashmessages">
+            {% for category, message in messages %}
+                {% if category == 'success' %}
+                    <div class="flashMessageSuccess">{{ message }}</div>
+                {% elif category == 'danger' %}
+                    <div class="flashMessageError">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<form method="POST">
+    <div class="form">
+        <label for="ownerId" class="form-label">Tulajdonos:</label>
+        <select name="ownerId" class="form-select" id="ownerId" required>
+            <option value="">-</option>
+            {% for owner in owners %}
+                <option value="{{ owner['id'] }}">{{ owner['name'] }}</option>
+            {% endfor %}
+        </select><br>
+    
+        <label for="vehicleId" class="form-label">Jármű:</label>
+        <select name="vehicleId" class="form-select" id="vehicleId" required>
+            <option value="">-</option>
+            {% for vehicle in vehicles %}
+                <option value="{{ vehicle['id'] }}">{{ vehicle['rsz'] }}</option>
+            {% endfor %}
+        </select><br>
+    
+        <label for="employeeId" class="form-label">Alkalmazott:</label>
+        <select name="employeeId" class="form-select" id="employeeId" required>
+            <option value="">-</option>
+            {% for employee in employees %}
+                <option value="{{ employee['id'] }}">{{ employee['name'] }}</option>
+            {% endfor %}
+        </select><br>
+    
+        <label for="comment" class="form-label">Megjegyzés:</label>
+        <textarea name="comment" rows="4" class="form-control"></textarea><br>
+        <button type="submit" class="btn btn-danger mt-2">Munka hozzáadása</button>
+    </div>
+</form>
+<a href="{{ url_for('index') }}">Vissza</a>
+
+<script>
+    setTimeout(function() {
+        var flashMessages = document.getElementsByClassName('flashmessages');
+        if (flashMessages) {
+            flashMessages[0].style.display = 'none';
+        }
+    }, 5000);
+</script>
+{% endblock %}

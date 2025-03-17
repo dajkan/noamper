@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&display=swap');
+
+html{
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+}
+
+a{
+    text-decoration: none !important;
+    color: white;
+}
+
+.container{
+    background-color:#023047 ;
+    -webkit-box-shadow: 3px 3px 14px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 14px 1px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 14px 1px rgba(0,0,0,0.75);
+    border-radius: 20px;
+    color: white;
+    min-height: 50vw;
+}
+
+body{
+    background-color:#219ebc;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.logo{
+    width: 12% !important;
+}
+
+.navElement{
+    padding: 1.5rem;
+    color: #ffb703;
+    border-radius: 25px;
+    display: inline-block;
+    width: 7rem !important;
+    transition: all 0.1s;
+}
+
+.navElement:hover{
+    background-color: white;
+    color: #219ebc;
+}
+
+.flashMessageSuccess {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.flashMessageError {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+button{
+    border: none;
+    background: inherit;
+}
+
+.form input, .form select, .form textarea{
+    width: 20%;
+    margin: 0 auto;
+}
+
+.fa-trash{
+    color: #e63946;
+}
+
+footer{
+    border-top: 3px solid white;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.viewValue{
+    color: #ffb703;
+}

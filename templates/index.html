@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row my-3">
+    <div class="col"><h2>Nyitott munkalapok</h2></div>
+</div>
+<div class="row">
+    <div class="col">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Rendszám</th>
+                    <th scope="col">Leírás</th>
+                    <th scope="col">Ügyfél neve</th>
+                    <th scope="col">Ügyfél száma</th>
+                    <th scope="col">Munkafelvevő</th>
+                    <th scope="col">Státusz</th>
+                    <th scope="col">Létrehozva</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr onclick="window.location.href='{{ url_for('job_task', job_id=item['id']) }}'" style="cursor: pointer;">
+                        <td>{{ item['id'] }}</td>
+                        <td>{{ item['rendszam'] }}</td>
+                        <td>{{ item['comment'] }}</td>
+                        <td>{{ item['name'] }}</td>
+                        <td>{{ item['phone'] }}</td>
+                        <td>{{ item['employeename'] }}</td>
+                        <td>{{ item['status'] }} <i title="Státusz módosítás" class="btn btn-warning fas fa-exchange-alt"></i></td>
+                        <td>{{ item['created'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

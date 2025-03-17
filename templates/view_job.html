@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Munkalap státusz</h1>
+
+<!-- Flash üzenetek megjelenítése -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flashmessages">
+            {% for category, message in messages %}
+                {% if category == 'success' %}
+                    <div class="flashMessageSuccess">{{ message }}</div>
+                {% elif category == 'danger' %}
+                    <div class="flashMessageError">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<form method="POST">
+    <div class="form">
+        <div class="row">
+            <div class="col fs-5"><span class="viewTitle">Munkalap száma: </span><span class="viewValue">#{{ job['id'] }}</span></div>
+        </div>
+        <div class="row">
+            <div class="col fs-5"><span class="viewTitle">Rendszám: </span><span class="viewValue">{{ job['rendszam'] }}</span></div>
+        </div>
+        <div class="row">
+            <div class="col fs-5"><span class="viewTitle">Leírás: </span><span class="viewValue">{{ job['comment'] }}</span></div>
+        </div>
+        <div class="row">
+            <div class="col fs-5"><span class="viewTitle">Ügyfél neve: </span><span class="viewValue">{{ job['name'] }}</span></div>
+        </div>
+        <div class="row">
+            <div class="col fs-5"><span class="viewTitle">Ügyfél száma: </span><span class="viewValue">{{ job['phone'] }}</span></div>
+        </div>
+        <div class="row">
+            <div class="col fs-5"><span class="viewTitle">Alkalmazott: </span><span class="viewValue">{{ job['employeename'] }}</span></div>
+        </div>
+        <div class="row">
+            <div class="col fs-5"><span class="viewTitle">Létrehozva: </span><span class="viewValue">{{ job['created'] }}</span></div>
+        </div>
+
+        <label for="status" class="form-label mt-2">Státusz: </label>
+        <select class="form-select" name="status" id="status">
+            <option value="">-</option>
+            {% for status in statuses %}
+                <option value="{{ status['id'] }}" 
+                    {% if status['id'] == job['statusId'] %} selected {% endif %}>
+                    {{ status['name'] }}
+                </option>
+            {% endfor %}
+        </select>        
+        <button type="submit" class="btn btn-danger mt-3">Státusz váltás</button>
+    </div>
+</form>
+<a href="{{ url_for('index') }}">Vissza</a>
+
+<script>
+    setTimeout(function() {
+        var flashMessages = document.getElementsByClassName('flashmessages');
+        if (flashMessages) {
+            flashMessages[0].style.display = 'none';
+        }
+    }, 5000);
+</script>
+{% endblock %}
