@@ -1,6 +1,5 @@
-railway.app
-email: onlytest910112@gmail.com
 
 render.com
 email: onlytest910112@gmail.com
 pw: noAmper__
+url: https://carfixtracker.onrender.com
